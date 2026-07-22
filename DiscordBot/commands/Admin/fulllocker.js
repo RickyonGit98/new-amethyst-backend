@@ -1,0 +1,64 @@
+const path = require("path");
+const fs = require("fs");
+const Users = require('../../../model/user.js');
+const Profiles = require('../../../model/profiles.js');
+const log = require("../../../structs/log.js");
+const destr = require("destr");
+const config = require('../../../Config/config.json')
+
+module.exports = {
+    commandInfo: {
+        name: "fulllocker",
+        description: "give someone full locker",
+        options: [
+            {
+                name: "user",
+                description: "The user you want to give the cosmetic to",
+                required: true,
+                type: 6
+            }
+        ]
+    },
+    execute: async (interaction) => {
+        if (!config.moderators.includes(interaction.user.id)) {
+            return interaction.reply({ content: "You do not have moderator permissions.", ephemeral: true });
+        }
+
+        await interaction.deferReply({ ephemeral: true });
+
+        const selectedUser = interaction.options.getUser('user');
+        const selectedUserId = selectedUser?.id;
+        try {
+            const targetUser = await Users.findOne({ discordId: selectedUserId });
+            if (!targetUser) {
+                return interaction.editReply({ content: "That user does not own an account" });
+            }
+
+            const profile = await Profiles.findOne({ accountId: targetUser.accountId });
+            if (!profile) {
+                return interaction.editReply({ content: "That user does not have a profile" });
+            }
+
+            const allItems = destr(fs.readFileSync(path.join(__dirname, "../../../Config/DefaultProfiles/allathena.json"), 'utf8'));
+            if (!allItems) {
+                return interaction.editReply({ content: "Failed to parse allathena.json" });
+            }
+
+            const athena = profile.profiles.athena;
+            athena.items = allItems.items;
+            athena.rvn++;
+            athena.commandRevision++;
+            athena.updated = new Date().toISOString();
+
+            await Profiles.updateOne(
+                { accountId: targetUser.accountId },
+                { $set: { "profiles.athena": athena } }
+            );
+
+            await interaction.editReply({ content: `Full locker added to **${targetUser.username}**`, ephemeral: true });
+        } catch (error) {
+            log.error("An error occurred:", error);
+            interaction.editReply({ content: "An error occurred while processing the request." });
+        }
+    }
+};

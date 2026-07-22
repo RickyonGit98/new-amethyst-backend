@@ -1,0 +1,93 @@
+{
+  "//": "BR Item Shop Config",
+  "daily1": {
+    "itemGrants": [
+      "AthenaCharacter:Character_LemonCartCleaner"
+    ],
+    "price": 1500
+  },
+  "daily2": {
+    "itemGrants": [
+      "AthenaCharacter:CID_193_Athena_Commando_F_Hippie"
+    ],
+    "price": 1500
+  },
+  "daily3": {
+    "itemGrants": [
+      "AthenaDance:EID_Saucer"
+    ],
+    "price": 800
+  },
+  "daily4": {
+    "itemGrants": [
+      "AthenaBackpack:BID_631_PumpkinPunkMale"
+    ],
+    "price": 1500
+  },
+  "daily5": {
+    "itemGrants": [
+      "AthenaGlider:Glider_ID_038_Deco"
+    ],
+    "price": 500
+  },
+  "daily6": {
+    "itemGrants": [
+      "AthenaPickaxe:HappyPickaxe"
+    ],
+    "price": 500
+  },
+  "daily7": {
+    "itemGrants": [
+      "AthenaLoadingscreen:LSID_205_AMEternal"
+    ],
+    "price": 200
+  },
+  "daily8": {
+    "itemGrants": [
+      "AthenaEmoji:Emoji_Number1"
+    ],
+    "price": 200
+  },
+  "featured1": {
+    "itemGrants": [
+      "AthenaCharacter:CID_628_Athena_Commando_M_HolidayTime"
+    ],
+    "price": 1500
+  },
+  "featured2": {
+    "itemGrants": [
+      "AthenaCharacter:CID_A_191_Athena_Commando_M_AlienFlora"
+    ],
+    "price": 1500
+  },
+  "featured3": {
+    "itemGrants": [
+      "AthenaDance:EID_Intensity"
+    ],
+    "price": 800
+  },
+  "featured4": {
+    "itemGrants": [
+      "AthenaBackpack:BID_870_CritterManiac_8Y8KK"
+    ],
+    "price": 1200
+  },
+  "featured5": {
+    "itemGrants": [
+      "AthenaGlider:Glider_ID_048_Viking"
+    ],
+    "price": 1200
+  },
+  "featured6": {
+    "itemGrants": [
+      "AthenaPickaxe:Pickaxe_ID_282_CODSquadPlaidFemale"
+    ],
+    "price": 500
+  },
+  "featured7": {
+    "itemGrants": [
+      "AthenaLoadingscreen:LSID_334_Suspenders"
+    ],
+    "price": 200
+  }
+}

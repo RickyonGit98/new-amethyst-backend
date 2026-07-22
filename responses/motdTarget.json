@@ -1,0 +1,68 @@
+{
+    "contentType": "collection",
+    "contentId": "motd-default-collection",
+    "tcId": "634e8e85-e2fc-4c68-bb10-93604cf6605f",
+    "contentItems": [
+      {
+        "contentType": "content-item",
+        "contentId": "46874c56-0973-4cbe-ac98-b580c5b36df5",
+        "tcId": "61fb3dd8-f23d-45cc-9058-058ab223ba5c",
+        "contentFields": {
+          "body": {
+            "ar": "تم الإنشاء بواسطة بورلون، هذا هو خلفية معدلة، جميع حقوق الخلفية الأصلية تذهب إلى لاوين",
+            "en": "Amethyst RELEASE",
+            "de": "Made by Ricky, credits.",
+            "es": "Creado por Ricky.",
+            "es-419": "Made by Ricky, credits.",
+            "fr": "Made by Ricky, credits.",
+            "it": "Creato da Ricky, crediti.",
+            "ja": "Rickyによって作成されました。",
+            "ko": "Ricky가 제작, 크레딧.",
+            "pl": "Stworzone przez Ricky",
+            "pt-BR": "Criado por Ricky, créditos.",
+            "ru": "Made by Ricky, credits.",
+            "tr": "Made by Ricky, credits."
+          },
+          "entryType": "Website",
+          "image": [
+            {
+              "width": 1536,
+              "height": 1024,
+              "url": "https://i.imgur.com/OV7kK5p.png"
+            }
+          ],
+          "tabTitleOverride": "OUR UPDATES",
+          "tileImage": [
+            {
+              "width": 1536,
+              "height": 1024,
+              "url": "https://i.imgur.com/OV7kK5p.png"
+            }
+          ],
+          "title": {
+            "ar": "Hey, Player!",
+            "en": "Hey, Player!",
+            "de": "Hey, Player!",
+            "es": "Qué tal por allí?",
+            "es-419": "Qué tal por allí?",
+            "fr": "Hey, Player!",
+            "it": "Hey, Player!",
+            "ja": "Hey, Player!",
+            "ko": "Hey, Player!",
+            "pl": "Hey, Player!",
+            "pt-BR": "Hey, Player!",
+            "ru": "Hey, Player!",
+            "tr": "Hey, Player!"
+          },
+          "videoAutoplay": false,
+          "videoLoop": false,
+          "videoMute": false,
+          "videoStreamingEnabled": false,
+          "websiteButtonText": "Amethyst-Creator",
+          "websiteURL": "https://github.com/RickyonGit98"
+        },
+        "contentHash": "reloadbackendcontenthashtylawin",
+        "contentSchemaName": "MotdWebsiteNewsWithVideo"
+        }
+    ]
+}

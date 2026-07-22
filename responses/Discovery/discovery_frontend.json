@@ -1,0 +1,157 @@
+{
+  "Panels": [
+    {
+      "PanelName": "ByEpicWoven",
+      "Pages": [
+        {
+          "results": [
+            {
+              "linkData": {
+                "namespace": "fn",
+                "mnemonic": "playlist_defaultsolo",
+                "linkType": "BR:Playlist",
+                "active": true,
+                "disabled": false,
+                "version": 95,
+                "moderationStatus": "Unmoderated",
+                "accountId": "fortnite",
+                "creatorName": "Ricky",
+                "descriptionTags": [],
+                "metadata": {
+                  "title": "Lategame Solos",
+                  "description": "Drop in solo and outlast everyone in the late game. Made by Ricky.",
+                  "image_url": "https://static.wikia.nocookie.net/fortnite/images/f/fa/Late_Game_Arena_-_Mode_-_Fortnite.jpg/revision/latest?cb=20211004231753",
+                  "matchmaking": {
+                    "override_playlist": "playlist_defaultsolo"
+                  }
+                }
+              },
+              "lastVisited": null,
+              "linkCode": "playlist_defaultsolo",
+              "isFavorite": false
+            },
+            {
+              "linkData": {
+                "namespace": "fn",
+                "mnemonic": "playlist_defaultduo",
+                "linkType": "BR:Playlist",
+                "active": true,
+                "disabled": false,
+                "version": 95,
+                "moderationStatus": "Unmoderated",
+                "accountId": "fortnite",
+                "creatorName": "Ricky",
+                "descriptionTags": [],
+                "metadata": {
+                  "title": "Lategame Duos",
+                  "description": "Team up with a partner and dominate the late game. Made by Ricky.",
+                  "image_url": "https://static.wikia.nocookie.net/fortnite/images/f/fa/Late_Game_Arena_-_Mode_-_Fortnite.jpg/revision/latest?cb=20211004231753",
+                  "matchmaking": {
+                    "override_playlist": "playlist_defaultduo"
+                  }
+                }
+              },
+              "lastVisited": null,
+              "linkCode": "playlist_defaultduo",
+              "isFavorite": false
+            },
+            {
+              "linkData": {
+                "namespace": "fn",
+                "mnemonic": "playlist_trios",
+                "linkType": "BR:Playlist",
+                "active": true,
+                "disabled": false,
+                "version": 95,
+                "moderationStatus": "Unmoderated",
+                "accountId": "fortnite",
+                "creatorName": "Ricky",
+                "descriptionTags": [],
+                "metadata": {
+                  "title": "Lategame Trios",
+                  "description": "Squad up with two friends and conquer the late game. Made by Ricky.",
+                  "image_url": "https://static.wikia.nocookie.net/fortnite/images/f/fa/Late_Game_Arena_-_Mode_-_Fortnite.jpg/revision/latest?cb=20211004231753",
+                  "matchmaking": {
+                    "override_playlist": "playlist_trios"
+                  }
+                }
+              },
+              "lastVisited": null,
+              "linkCode": "playlist_trios",
+              "isFavorite": false
+            },
+            {
+              "linkData": {
+                "namespace": "fn",
+                "mnemonic": "playlist_defaultsquad",
+                "linkType": "BR:Playlist",
+                "active": true,
+                "disabled": false,
+                "version": 95,
+                "moderationStatus": "Unmoderated",
+                "accountId": "fortnite",
+                "creatorName": "Ricky",
+                "descriptionTags": [],
+                "metadata": {
+                  "title": "Lategame Squads",
+                  "description": "Full squad, full action. Dominate the late game together. Made by Ricky.",
+                  "image_url": "https://i.imgur.com/8PZJpQG.jpg",
+                  "matchmaking": {
+                    "override_playlist": "playlist_defaultsquad"
+                  }
+                }
+              },
+              "lastVisited": null,
+              "linkCode": "playlist_defaultsquad",
+              "isFavorite": false
+            },
+            {
+              "linkData": {
+                "namespace": "fn",
+                "mnemonic": "campaign",
+                "linkType": "SubGame",
+                "active": true,
+                "disabled": false,
+                "version": 5,
+                "moderationStatus": "Unmoderated",
+                "accountId": "fortnite",
+                "creatorName": "Ricky",
+                "descriptionTags": [
+                  "pve"
+                ],
+                "metadata": {
+                  "ownership_token": "Token:campaignaccess",
+                  "image_url": "https://i.imgur.com/dh9iRio.png",
+                  "title": "Save The World",
+                  "matchmaking": {
+                    "joinInProgressType": "JoinImmediately",
+                    "playersPerTeam": 4,
+                    "maximumNumberOfPlayers": 4,
+                    "override_Playlist": "",
+                    "playerCount": 4,
+                    "mmsType": "keep_full",
+                    "mmsPrivacy": "Public",
+                    "numberOfTeams": 1,
+                    "bAllowJoinInProgress": true,
+                    "minimumNumberOfPlayers": 1,
+                    "joinInProgressTeam": 1
+                  },
+                  "tagline": "Battle to hold back the monster hordes and explore a vast, destructible world.",
+                  "introduction": "Battle to hold back the monster hordes and explore a vast, destructible world. Made by Ricky."
+                }
+              },
+              "lastVisited": null,
+              "linkCode": "campaign",
+              "isFavorite": false
+            }
+          ],
+          "hasMore": false
+        }
+      ]
+    }
+  ],
+  "TestCohorts": [
+    "Reload"
+  ],
+  "ModeSets": {}
+}
