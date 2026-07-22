@@ -33,8 +33,8 @@ if (fs.existsSync(jwtSecretPath)) {
     fs.writeFileSync(jwtSecretPath, global.JWT_SECRET);
     log.backend("New JWT secret generated and saved");
 }
-const PORT = config.port;
-const WEBSITEPORT = config.Website.websiteport;
+const PORT = process.env.PORT || config.port;
+const WEBSITEPORT = process.env.WEBSITEPORT || config.Website.websiteport;
 
 let httpsServer;
 
@@ -74,67 +74,76 @@ async function connectDatabase() {
     const dbPath = path.join(__dirname, "..", "..", "mongodb-data");
     if (!fs.existsSync(dbPath)) fs.mkdirSync(dbPath, { recursive: true });
 
-    const mongodBinary = path.join(os.homedir(), ".cache", "mongodb-binaries", "mongod-x64-win32-8.2.6.exe");
+    const mongoUri = process.env.MONGODB_URI || config.mongodb.database;
 
     try {
-        await mongoose.connect(config.mongodb.database, { serverSelectionTimeoutMS: 3000 });
+        await mongoose.connect(mongoUri, { serverSelectionTimeoutMS: 3000 });
         log.backend("Database Connected");
+        return;
     } catch (err) {
         log.error(`MongoDB connection failed: ${err.message}`);
-        log.backend("Starting local MongoDB server with persistent storage...");
+    }
 
-        if (!fs.existsSync(mongodBinary)) {
-            log.backend("Downloading MongoDB binary...");
-            try {
-                const { MongoMemoryServer } = require("mongodb-memory-server");
-                const temp = await MongoMemoryServer.create({ instance: { dbPath: dbPath } });
-                await temp.stop();
-            } catch (e) {
-                log.error(`Failed to download MongoDB: ${e.message}`);
-                throw e;
-            }
-        }
+    if (os.platform() !== 'win32') {
+        log.error("On Linux/Render, set MONGODB_URI environment variable to a remote MongoDB (e.g. MongoDB Atlas)");
+        throw new Error("No MongoDB available on this platform");
+    }
 
+    log.backend("Starting local MongoDB server with persistent storage...");
+
+    const mongodBinary = path.join(os.homedir(), ".cache", "mongodb-binaries", "mongod-x64-win32-8.2.6.exe");
+
+    if (!fs.existsSync(mongodBinary)) {
+        log.backend("Downloading MongoDB binary...");
         try {
-            const lockFile = path.join(dbPath, "WiredTiger.lock");
-            if (fs.existsSync(lockFile)) {
-                try { fs.unlinkSync(lockFile); } catch (e) {}
-            }
-
-            const { spawn } = require("child_process");
-            const logFd = fs.openSync(path.join(dbPath, "..", "mongod.log"), "a");
-
-            global.mongodProcess = spawn(mongodBinary, [
-                "--dbpath", dbPath,
-                "--port", "27017"
-            ], {
-                stdio: ["ignore", logFd, logFd],
-                detached: true
-            });
-
-            global.mongodProcess.unref();
-
-            let connected = false;
-            for (let i = 0; i < 20; i++) {
-                try {
-                    await mongoose.connect("mongodb://127.0.0.1:27017/Amethyst", { serverSelectionTimeoutMS: 2000 });
-                    connected = true;
-                    break;
-                } catch (e) {
-                    await new Promise(r => setTimeout(r, 2000));
-                }
-            }
-
-            if (!connected) {
-                throw new Error("Could not connect to local MongoDB after 40 seconds");
-            }
-
-            config.mongodb.database = "mongodb://127.0.0.1:27017/Amethyst";
-            log.backend("Connected to local MongoDB (persistent storage)");
-        } catch (memErr) {
-            log.error(`Local MongoDB failed: ${memErr.message}`);
-            throw memErr;
+            const { MongoMemoryServer } = require("mongodb-memory-server");
+            const temp = await MongoMemoryServer.create({ instance: { dbPath: dbPath } });
+            await temp.stop();
+        } catch (e) {
+            log.error(`Failed to download MongoDB: ${e.message}`);
+            throw e;
         }
+    }
+
+    try {
+        const lockFile = path.join(dbPath, "WiredTiger.lock");
+        if (fs.existsSync(lockFile)) {
+            try { fs.unlinkSync(lockFile); } catch (e) {}
+        }
+
+        const { spawn } = require("child_process");
+        const logFd = fs.openSync(path.join(dbPath, "..", "mongod.log"), "a");
+
+        global.mongodProcess = spawn(mongodBinary, [
+            "--dbpath", dbPath,
+            "--port", "27017"
+        ], {
+            stdio: ["ignore", logFd, logFd],
+            detached: true
+        });
+
+        global.mongodProcess.unref();
+
+        let connected = false;
+        for (let i = 0; i < 20; i++) {
+            try {
+                await mongoose.connect("mongodb://127.0.0.1:27017/Amethyst", { serverSelectionTimeoutMS: 2000 });
+                connected = true;
+                break;
+            } catch (e) {
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        }
+
+        if (!connected) {
+            throw new Error("Could not connect to local MongoDB after 40 seconds");
+        }
+
+        config.mongodb.database = "mongodb://127.0.0.1:27017/Amethyst";
+        log.backend("Connected to local MongoDB (persistent storage)");
+    } catch (memErr) {
+        log.error(`Local MongoDB failed: ${memErr.message}`);
+        throw memErr;
     }
 }
 
